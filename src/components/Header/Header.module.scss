@@ -14,16 +14,54 @@
 }
 
 .navigation {
+  height: 100%;
   ul {
     display: flex;
+    height: 100%;
     li {
+      @include centered-flex;
       list-style: none;
       margin-right: 1rem;
+      height: 100%;
     }
   }
+}
+
+.active-link {
+  color: $primary-color;
+  border-bottom: 2px solid $primary-color;
 }
 
 .actions {
   @include centered-flex;
   justify-content: flex-end;
+  position: relative;
+}
+
+.currency {
+  @include centered-flex;
+  img {
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+  }
+}
+
+.currency-list {
+  position: absolute;
+  top: 100%;
+  li {
+    list-style: none;
+    cursor: pointer;
+  }
+  li:hover {
+    color: $primary-color;
+  }
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.hidden {
+  display: none;
 }
