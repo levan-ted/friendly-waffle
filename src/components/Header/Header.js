@@ -23,8 +23,13 @@ export class Header extends Component {
         currencyListStyle: updatedCurrencyListStyle,
       };
     });
-    console.log(this.state);
   }
+
+  selectCurrency(e) {
+    console.log(e.target.dataset.value);
+    this.toggleCurrency();
+  }
+
   render() {
     return (
       <header className={styles.header}>
@@ -38,18 +43,19 @@ export class Header extends Component {
         <img src={images.logo} alt="Logo" />
         <div className={styles.actions}>
           <span className={styles.currency}>
-            <p>$</p>
+            <p onClick={this.toggleCurrency.bind(this)}>$</p>
             <img
               className={this.state.arrowStyle}
               src={images.selectArrow}
               onClick={this.toggleCurrency.bind(this)}
             />
             <ul
+              onClick={this.selectCurrency.bind(this)}
               className={`${styles["currency-list"]} ${this.state.currencyListStyle}`}
             >
-              <li>USD</li>
-              <li>EUR</li>
-              <li>JPY</li>
+              <li data-value="USD">$ USD</li>
+              <li data-value="EUR">€ EUR</li>
+              <li data-value="JPY">¥ JPY</li>
             </ul>
           </span>
           <img src={images.emptyCart} alt="cart" />
