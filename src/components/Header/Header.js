@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styles from "./Header.module.scss";
 import * as images from "../../assets/images";
 
-export class Header extends Component {
+export class Header extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
