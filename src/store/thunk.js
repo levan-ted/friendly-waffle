@@ -1,5 +1,3 @@
-import { categoryActions } from "./slices/category-slice";
-import { productsActions } from "./slices/products-slice";
 import { dataActions } from "./slices/data-slice";
 import gql from "graphql-tag";
 import ApolloClient from "apollo-boost";
