@@ -1,22 +1,36 @@
-import { categoryActions } from "./slices/category-slice";
-import { productsActions } from "./slices/products-slice";
+import { dataActions } from "./slices/data-slice";
+import { currencyActions } from "./slices/currency-slice";
+import gql from "graphql-tag";
+import ApolloClient from "apollo-boost";
+import { CURRENCIES, CATEGORIES } from "../constants/gql-queries";
 
-const getCategories = () => async (dispatch) => {
-  try {
-    // Async fetching data from GraphQL
-    dispatch(categoryActions.getCategories("payload"));
-  } catch (err) {
-    console.log("Something went wrong");
-  }
-};
+export const client = new ApolloClient({ uri: "http://localhost:4000" });
 
-const getProducts = () => async (dispatch) => {
+const getCurrencies = () => async (dispatch) => {
   try {
-    // Async fetching data from GraphQL
-    dispatch(productsActions.getAllProducts("payload"));
+    const res = await client.query({ query: CURRENCIES });
+    dispatch(currencyActions.getCurrencies(res.data.currencies));
   } catch (err) {
     console.log(err);
   }
 };
 
-export { getCategories, getProducts };
+const changeCurrency = (value) => async (dispatch) => {
+  try {
+    dispatch(currencyActions.changeCurrency(value));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getCategories = () => async (dispatch) => {
+  try {
+    const res = await client.query({ query: CATEGORIES });
+    const categories = res.data.categories;
+    dispatch(dataActions.getCategoryNames(categories));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getCurrencies, changeCurrency, getCategories };

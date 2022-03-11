@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import categorySlice from "./slices/category-slice";
-import productsSlice from "./slices/products-slice";
+import currencySlice from "./slices/currency-slice";
+import dataSlice from "./slices/data-slice";
 
 const store = configureStore({
   reducer: {
-    categories: categorySlice.reducer,
-    products: productsSlice.reducer,
+    data: dataSlice.reducer,
+    currencies: currencySlice.reducer,
   },
 });
 
