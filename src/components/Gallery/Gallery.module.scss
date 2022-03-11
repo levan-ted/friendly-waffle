@@ -1,0 +1,26 @@
+@import "../../styles/css-variables.scss";
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 0 $side-padding;
+}
+
+.image-container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.thumbnails {
+  width: 100%;
+  img {
+    width: 100%;
+  }
+}
+
+.image-preview {
+  width: 100%;
+  img {
+    width: 100%;
+  }
+}

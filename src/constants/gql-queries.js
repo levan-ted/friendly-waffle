@@ -22,7 +22,7 @@ const CATEGORIES = gql`
 `;
 
 const SINGLE_PRODUCT = (id) => gql`{
-    product(id: ${id}) {
+    product(id: "${id}") {
      id
      name
      inStock

@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Shop from "./pages/Shop";
 
 import { getCurrencies, getCategories } from "./store/thunk";
+import ProductPage from "./pages/ProductPage/ProductPage";
 
 class App extends PureComponent {
   componentDidMount() {
@@ -20,11 +21,15 @@ class App extends PureComponent {
         <div className="App">
           <Header categories={this.props.data.categories} />
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <Redirect to="/all" />
             </Route>
+            <Route path="/product/:productId" component={ProductPage} />
+
+            <Route path="/shop">
+              <Shop />
+            </Route>
           </Switch>
-          <Shop />
         </div>
       </ApolloProvider>
     );
