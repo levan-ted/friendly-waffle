@@ -1,0 +1,23 @@
+@import "../../styles/css-variables.scss";
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  padding: 0 $side-padding;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  grid-gap: 2rem;
+}
+
+@media only screen and (max-width: 1300px) {
+  .grid {
+    grid-template-columns: repeat(2, 350px);
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .grid {
+    grid-template-columns: 350px;
+  }
+}
