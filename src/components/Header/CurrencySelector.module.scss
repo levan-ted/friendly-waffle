@@ -16,6 +16,8 @@
   top: 100%;
   width: 100px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  z-index: 2;
+  background: white;
   li {
     list-style: none;
     font-weight: 500;

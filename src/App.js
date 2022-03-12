@@ -22,13 +22,10 @@ class App extends PureComponent {
           <Header categories={this.props.data.categories} />
           <Switch>
             <Route exact path="/">
-              <Redirect to="/all" />
+              <Redirect to="/shop/all" />
             </Route>
             <Route path="/product/:productId" component={ProductPage} />
-
-            <Route path="/shop">
-              <Shop />
-            </Route>
+            <Route path="/shop/:categoryId" component={Shop} />
           </Switch>
         </div>
       </ApolloProvider>

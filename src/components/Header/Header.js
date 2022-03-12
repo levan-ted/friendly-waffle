@@ -14,7 +14,7 @@ export class Header extends PureComponent {
               <li key={ctg.name}>
                 <NavLink
                   activeClassName={styles["active-link"]}
-                  to={`/${ctg.name}`}
+                  to={`/shop/${ctg.name}`}
                 >
                   {ctg.name}
                 </NavLink>

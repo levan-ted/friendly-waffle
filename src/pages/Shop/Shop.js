@@ -11,11 +11,16 @@ export class Shop extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
+    if (this.props !== prevProps) {
       this.setState((state, props) => {
+        const category = props.match.params.categoryId;
+        const productList = props.data.categories.find(
+          (ctg) => ctg.name === category
+        ).products;
+        console.log(productList);
         return {
-          productList: props.data.categories[0].products,
-          category: props.data.categories[0].name,
+          productList,
+          category,
         };
       });
     }
