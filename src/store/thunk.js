@@ -1,11 +1,13 @@
 import { dataActions } from "./slices/data-slice";
 import { currencyActions } from "./slices/currency-slice";
+import { cartActions } from "./slices/cart-slice";
 import gql from "graphql-tag";
 import ApolloClient from "apollo-boost";
 import { CURRENCIES, CATEGORIES } from "../constants/gql-queries";
 
 export const client = new ApolloClient({ uri: "http://localhost:4000" });
 
+// CURRENCY OPERATIONS
 const getCurrencies = () => async (dispatch) => {
   try {
     const res = await client.query({ query: CURRENCIES });
@@ -23,6 +25,8 @@ const changeCurrency = (value) => async (dispatch) => {
   }
 };
 
+// GET PRODUCTS FROM THE SERVER
+
 const getCategories = () => async (dispatch) => {
   try {
     const res = await client.query({ query: CATEGORIES });
@@ -33,4 +37,20 @@ const getCategories = () => async (dispatch) => {
   }
 };
 
-export { getCurrencies, changeCurrency, getCategories };
+// CART ACTIONS
+
+const addItemToCart = (item) => async (dispatch) => {
+  dispatch(cartActions.addItem(item));
+};
+
+const removeItemFromCart = (item) => async (dispatch) => {
+  dispatch(cartActions.removeItem(item));
+};
+
+export {
+  getCurrencies,
+  changeCurrency,
+  getCategories,
+  addItemToCart,
+  removeItemFromCart,
+};

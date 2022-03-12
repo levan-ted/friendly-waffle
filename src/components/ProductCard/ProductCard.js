@@ -6,7 +6,6 @@ import styles from "./ProductCard.module.scss";
 
 export class ProductCard extends Component {
   render() {
-    console.log(this.props);
     if (!this.props.product) {
       return <p>Loading...</p>;
     } else {
