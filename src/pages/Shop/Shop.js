@@ -31,8 +31,8 @@ export class Shop extends Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <main>
-          <h2>{this.state.category}</h2>
+        <main className={styles.wrapper}>
+          <h2 className={styles.header}>{this.state.category}</h2>
           <div className={styles.grid}>
             {this.state.productList.map((product) => (
               <ProductCard product={product} currency={this.props.currency} />

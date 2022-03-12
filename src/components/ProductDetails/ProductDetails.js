@@ -16,9 +16,10 @@ export class ProductDetails extends Component {
     console.log(this.state);
     return (
       <div className={styles.container}>
-        <h2 className={styles.brand}>{product.brand}</h2>
-        <h2 className={styles.name}>{product.name}</h2>
-
+        <div className={styles.title}>
+          <h2 className={styles.brand}>{product.brand}</h2>
+          <h2 className={styles.name}>{product.name}</h2>
+        </div>
         <div className={styles.price}>
           <span>PRICE:</span>
           <span>{priceTag}</span>
