@@ -4,6 +4,8 @@ import { formatCurrency } from "../../helpers/format-currency";
 import { addItemToCart, removeItemFromCart } from "../../store/thunk";
 import styles from "./ProductDetails.module.scss";
 
+import Attribute from "../Attribute";
+
 export class ProductDetails extends Component {
   constructor(props) {
     super();
@@ -21,8 +23,8 @@ export class ProductDetails extends Component {
 
   render() {
     const { product, currency } = this.props;
-    const price = product.prices.find((el) => el.currency.label === currency);
 
+    const price = product.prices.find((el) => el.currency.label === currency);
     const priceTag = `${price.currency.symbol} ${formatCurrency(price.amount)}`;
     const handleCart = () => {
       if (!this.state.alreadyInCart) {
@@ -31,6 +33,16 @@ export class ProductDetails extends Component {
       } else {
         this.setState(() => ({ alreadyInCart: false }));
         this.props.removeItemFromCart(product);
+      }
+    };
+
+    const updateAttributes = (id, attr) => {
+      if (!product.selectedAttributes) product.selectedAttributes = [];
+
+      if (product.selectedAttributes.some((attr) => attr.id === id)) {
+        product.selectedAttributes.find((el) => el.id === id).attr = attr;
+      } else {
+        product.selectedAttributes.push({ id, attr });
       }
     };
 
@@ -43,6 +55,11 @@ export class ProductDetails extends Component {
         <div className={styles.title}>
           <h2 className={styles.brand}>{product.brand}</h2>
           <h2 className={styles.name}>{product.name}</h2>
+        </div>
+        <div className={styles["attribute-container"]}>
+          {product.attributes.map((el) => (
+            <Attribute element={el} updateAttributes={updateAttributes} />
+          ))}
         </div>
         <div className={styles.price}>
           <span>PRICE:</span>

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import styles from "./Header.module.scss";
 import * as images from "../../assets/images";
 import CurrencySelector from "./CurrencySelector";
+import CartBox from "./CartBox";
 
 export class Header extends PureComponent {
   render() {
@@ -25,7 +26,7 @@ export class Header extends PureComponent {
         <img src={images.logo} alt="Logo" />
         <div className={styles.actions}>
           <CurrencySelector />
-          <img src={images.emptyCart} alt="cart" />
+          <CartBox />
         </div>
       </header>
     );

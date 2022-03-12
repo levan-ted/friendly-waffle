@@ -29,6 +29,16 @@ const SINGLE_PRODUCT = (id) => gql`{
      gallery
      description
      category
+     attributes{
+      name
+      id
+      type
+      items{
+        displayValue
+        value
+        id
+      }
+    }
      prices{
        currency{
          label
