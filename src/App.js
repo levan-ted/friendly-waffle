@@ -9,6 +9,7 @@ import Shop from "./pages/Shop";
 
 import { getCurrencies, getCategories } from "./store/thunk";
 import ProductPage from "./pages/ProductPage/ProductPage";
+import Cart from "./pages/Cart";
 
 class App extends PureComponent {
   componentDidMount() {
@@ -26,6 +27,7 @@ class App extends PureComponent {
             </Route>
             <Route path="/product/:productId" component={ProductPage} />
             <Route path="/shop/:categoryId" component={Shop} />
+            <Route path="/cart" component={Cart} />
           </Switch>
         </div>
       </ApolloProvider>
