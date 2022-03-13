@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import styles from "./CartItem.module.scss";
 
 import { minusSquare, plusSquare } from "../../assets/images";
+import { addItemToCart, reduceItemQuantity } from "../../store/thunk";
+import PriceTag from "../../components/PriceTag";
 
 export class CartItem extends Component {
   render() {
@@ -13,12 +15,22 @@ export class CartItem extends Component {
         <div className={styles.details}>
           <h2 className={styles.brand}> {product.brand}</h2>
           <h2 className={styles.name}>{product.name}</h2>
-          <span>{product.price}</span>
+          <PriceTag product={product} className={styles.pricetag} />
         </div>
         <div className={styles.actions}>
-          <img src={plusSquare} alt="+" className={styles.button} />
+          <img
+            onClick={() => this.props.addItemToCart(product)}
+            src={plusSquare}
+            alt="+"
+            className={styles.button}
+          />
           <span>{product.quantity}</span>
-          <img src={minusSquare} alt="-" className={styles.button} />
+          <img
+            onClick={() => this.props.reduceItemQuantity(product)}
+            src={minusSquare}
+            alt="-"
+            className={styles.button}
+          />
         </div>
         <div className={styles["image-container"]}>
           <img src={product.gallery[0]} />
@@ -32,6 +44,6 @@ const mapStateToProps = (state) => ({
   currency: state.currencies.active.label,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { addItemToCart, reduceItemQuantity };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartItem);

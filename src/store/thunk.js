@@ -47,10 +47,15 @@ const removeItemFromCart = (item) => async (dispatch) => {
   dispatch(cartActions.removeItem(item));
 };
 
+const reduceItemQuantity = (item) => async (dispatch) => {
+  dispatch(cartActions.reduceItemQuantity(item));
+};
+
 export {
   getCurrencies,
   changeCurrency,
   getCategories,
   addItemToCart,
   removeItemFromCart,
+  reduceItemQuantity,
 };

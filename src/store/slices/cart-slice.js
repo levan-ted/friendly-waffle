@@ -8,11 +8,9 @@ const cartSlice = createSlice({
   reducers: {
     addItem(state, action) {
       const newItem = action.payload;
-
       const alreadyInCart = state.cartItems.some(
         (item) => item.id === newItem.id
       );
-
       if (alreadyInCart) {
         const existingItem = state.cartItems.find((el) => el.id === newItem.id);
         existingItem.quantity += 1;
@@ -22,14 +20,22 @@ const cartSlice = createSlice({
       }
     },
     removeItem(state, action) {
+      console.log("Remove Item");
       const item = action.payload;
-
       const existingItem = state.cartItems.find((el) => el.id === item.id);
-
       if (!existingItem) return;
-      if (existingItem.quantity === 1)
+      state.cartItems = state.cartItems.filter((el) => el.id !== item.id);
+    },
+
+    reduceItemQuantity(state, action) {
+      const item = action.payload;
+      const existingItem = state.cartItems.find((el) => el.id === item.id);
+      if (!existingItem) return;
+      if (existingItem.quantity === 1) {
         state.cartItems = state.cartItems.filter((el) => el.id !== item.id);
-      return;
+      } else {
+        existingItem.quantity--;
+      }
     },
   },
 });

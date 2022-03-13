@@ -5,6 +5,7 @@ import { addItemToCart, removeItemFromCart } from "../../store/thunk";
 import styles from "./ProductDetails.module.scss";
 
 import Attribute from "../Attribute";
+import PriceTag from "../PriceTag";
 
 export class ProductDetails extends Component {
   constructor(props) {
@@ -22,10 +23,8 @@ export class ProductDetails extends Component {
   }
 
   render() {
-    const { product, currency } = this.props;
+    const { product } = this.props;
 
-    const price = product.prices.find((el) => el.currency.label === currency);
-    const priceTag = `${price.currency.symbol} ${formatCurrency(price.amount)}`;
     const handleCart = () => {
       if (!this.state.alreadyInCart) {
         this.setState(() => ({ alreadyInCart: true }));
@@ -63,7 +62,7 @@ export class ProductDetails extends Component {
         </div>
         <div className={styles.price}>
           <span>PRICE:</span>
-          <span>{priceTag}</span>
+          <PriceTag product={product} />
         </div>
 
         <button onClick={handleCart} className={styles.button}>
