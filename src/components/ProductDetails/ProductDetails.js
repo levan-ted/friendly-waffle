@@ -57,7 +57,11 @@ export class ProductDetails extends Component {
         </div>
         <div className={styles["attribute-container"]}>
           {product.attributes.map((el) => (
-            <Attribute element={el} updateAttributes={updateAttributes} />
+            <Attribute
+              key={el.id}
+              element={el}
+              updateAttributes={updateAttributes}
+            />
           ))}
         </div>
         <div className={styles.price}>

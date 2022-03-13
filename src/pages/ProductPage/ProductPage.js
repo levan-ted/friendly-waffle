@@ -31,7 +31,6 @@ export class ProductPage extends Component {
       return <Loader />;
     } else {
       const { product } = this.state;
-      console.log(product);
       return (
         <main className={styles.grid}>
           <Gallery product={this.state.product} />

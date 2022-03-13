@@ -39,6 +39,11 @@ const getCategories = () => async (dispatch) => {
 
 // CART ACTIONS
 
+const getInitialCartState = (cart) => (dispatch) => {
+  console.log(cart);
+  dispatch(cartActions.getInitialState(cart));
+};
+
 const addItemToCart = (item) => async (dispatch) => {
   dispatch(cartActions.addItem(item));
 };
@@ -58,4 +63,5 @@ export {
   addItemToCart,
   removeItemFromCart,
   reduceItemQuantity,
+  getInitialCartState,
 };

@@ -9,7 +9,6 @@ import PriceTag from "../../components/PriceTag";
 export class CartItem extends Component {
   render() {
     const { product } = this.props;
-    console.log(product);
     return (
       <div className={styles.container}>
         <div className={styles.details}>

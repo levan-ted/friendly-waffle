@@ -17,8 +17,9 @@ export class Gallery extends Component {
     return (
       <div className={styles["image-container"]}>
         <div className={styles.thumbnails}>
-          {this.props.product.gallery.map((imgUrl) => (
+          {this.props.product.gallery.map((imgUrl, idx) => (
             <img
+              key={idx}
               onMouseOver={() => this.changeImage(imgUrl)}
               src={imgUrl}
               alt={this.props.product.name}

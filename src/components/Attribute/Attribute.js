@@ -6,7 +6,6 @@ export class Attribute extends Component {
   selectColor(e, el, item) {
     e.target.closest("div").childNodes.forEach((node) => (node.innerHTML = ""));
     e.target.innerHTML = "<p style='text-shadow:1px 0px 1px #ffffff'>X</p>";
-    console.log(el, item);
     this.props.updateAttributes(el, item);
   }
 
@@ -25,6 +24,7 @@ export class Attribute extends Component {
       if (el.name === "Color")
         return (
           <span
+            key={item.id}
             onClick={(e) => {
               this.selectColor.bind(this)(e, el.id, item);
             }}
@@ -33,6 +33,7 @@ export class Attribute extends Component {
         );
       return (
         <span
+          key={item.id}
           onClick={(e) => {
             this.selectSize.bind(this)(e, el.id, item);
           }}
