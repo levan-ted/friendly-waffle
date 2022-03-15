@@ -20,6 +20,9 @@ export class Attribute extends Component {
   }
   render() {
     const el = this.props.element;
+    const selectedAttributes = this.props.selected;
+    const selectedAttr = selectedAttributes?.find((attr) => attr.id === el.id);
+    console.log(selectedAttr);
     const buttons = el.items.map((item) => {
       if (el.name === "Color")
         return (
@@ -29,10 +32,15 @@ export class Attribute extends Component {
               this.selectColor.bind(this)(e, el.id, item);
             }}
             style={{ background: item.value }}
-          ></span>
+          >
+            {item.id === selectedAttr.attr.id ? "X" : ""}
+          </span>
         );
       return (
         <span
+          className={
+            item.id === selectedAttr?.attr.id ? styles["selected-size"] : ""
+          }
           key={item.id}
           onClick={(e) => {
             this.selectSize.bind(this)(e, el.id, item);
@@ -45,8 +53,18 @@ export class Attribute extends Component {
 
     return (
       <div className={styles.attribute}>
-        <span className={styles["attr-name"]}>{el.name}</span>
-        <div className={styles.buttons}>{buttons}</div>
+        {!this.props.hideLabel && (
+          <span className={styles["attr-name"]}>{el.name}</span>
+        )}
+        <div
+          className={
+            this.props.hideLabel
+              ? `${styles.shrinked} ${styles.buttons}`
+              : styles.buttons
+          }
+        >
+          {buttons}
+        </div>
       </div>
     );
   }

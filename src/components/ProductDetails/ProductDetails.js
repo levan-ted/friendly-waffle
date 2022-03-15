@@ -61,6 +61,7 @@ export class ProductDetails extends Component {
               key={el.id}
               element={el}
               updateAttributes={updateAttributes}
+              selected={product.selectedAttributes}
             />
           ))}
         </div>

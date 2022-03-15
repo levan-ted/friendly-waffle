@@ -1,5 +1,14 @@
 @import "../../styles/css-variables.scss";
 
+.header {
+  margin: 5rem 0;
+  padding: 0 $side-padding;
+  font-weight: 700;
+  font-size: 2rem;
+  width: 100%;
+  text-align: left;
+}
+
 .cart-container {
   width: 100%;
   padding: 0 $side-padding;

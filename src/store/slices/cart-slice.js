@@ -42,6 +42,7 @@ const cartSlice = createSlice({
     },
 
     getInitialState(state, action) {
+      if (!action.payload) return;
       const newState = [...action.payload];
       console.log(newState);
       if (newState && newState.length > 0) state.cartItems = newState;
