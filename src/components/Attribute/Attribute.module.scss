@@ -1,0 +1,40 @@
+.attribute {
+  width: 100%;
+}
+
+.attr-name {
+  display: inline-block;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 63px;
+    height: 45px;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+}
+
+.selected-size {
+  background: black;
+  color: white;
+}
+
+.shrinked {
+  span {
+    width: 42px;
+    height: 30px;
+  }
+}

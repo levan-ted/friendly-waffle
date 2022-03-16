@@ -1,0 +1,16 @@
+.icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.counter {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: white;
+  background: black;
+  top: -50%;
+  right: -50%;
+  font-size: 0.9rem;
+}

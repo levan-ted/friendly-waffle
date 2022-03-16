@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import { PureComponent } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { ApolloProvider } from "react-apollo";
+import { client } from "./store/thunk";
+import "./App.scss";
+import * as storage from "./helpers/localStorage";
+import Header from "./components/Header";
+import Shop from "./pages/Shop";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {
+  getCurrencies,
+  getCategories,
+  getInitialCartState,
+} from "./store/thunk";
+import ProductPage from "./pages/ProductPage/ProductPage";
+import Cart from "./pages/Cart";
+import Bag from "./components/Bag/Bag";
+
+class App extends PureComponent {
+  componentDidMount() {
+    this.props.getCurrencies();
+    this.props.getCategories();
+    this.props.getInitialCartState(storage.get("cart"));
+  }
+  render() {
+    return (
+      <ApolloProvider client={client}>
+        <div className="App">
+          <Header categories={this.props.data.categories} />
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/shop/all" />
+            </Route>
+            <Route path="/product/:productId" component={ProductPage} />
+            <Route path="/shop/:categoryId" component={Shop} />
+            <Route path="/cart" component={Cart} />
+          </Switch>
+          <Bag />
+        </div>
+      </ApolloProvider>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  data: state.data,
+});
+
+const mapDispatchToProps = {
+  getCurrencies,
+  getCategories,
+  getInitialCartState,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
