@@ -9,6 +9,18 @@ const CATEGORIES = gql`
         name
         inStock
         gallery
+        description
+        category
+        attributes {
+          name
+          id
+          type
+          items {
+            displayValue
+            value
+            id
+          }
+        }
         prices {
           currency {
             label
@@ -16,6 +28,7 @@ const CATEGORIES = gql`
           }
           amount
         }
+        brand
       }
     }
   }

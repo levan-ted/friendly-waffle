@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { formatCurrency } from "../../helpers/format-currency";
+import { addItemToCart, removeItemFromCart } from "../../store/thunk";
 import styles from "./ProductCard.module.scss";
-import { cartWhite } from "../../assets/images";
+import { cartWhite, checkWhite } from "../../assets/images";
 export class ProductCard extends Component {
-  state = { showCartIcon: false };
+  state = { showCartIcon: false, isInCart: false };
 
   showCartIcon(e) {
     this.setState((prevState) => ({ showCartIcon: true }));
@@ -17,7 +18,16 @@ export class ProductCard extends Component {
 
   handleCart(e, product) {
     e.preventDefault();
-    console.log(product);
+
+    const shallowCopy = JSON.parse(JSON.stringify(product));
+
+    if (!this.state.isInCart) {
+      this.props.addItemToCart(shallowCopy);
+      this.setState((prevState) => ({ ...prevState, isInCart: true }));
+    } else {
+      this.props.removeItemFromCart(shallowCopy);
+      this.setState((prevState) => ({ ...prevState, isInCart: false }));
+    }
   }
 
   render() {
@@ -51,7 +61,10 @@ export class ProductCard extends Component {
                   onClick={(e) => this.handleCart.bind(this)(e, product)}
                   className={styles["cart-icon"]}
                 >
-                  <img src={cartWhite} alt="Add to Cart" />
+                  <img
+                    src={this.state.isInCart ? checkWhite : cartWhite}
+                    alt="Add to Cart"
+                  />
                 </span>
               )}
               <span>{product.name}</span>
@@ -68,6 +81,6 @@ const mapStateToProps = (state) => ({
   currency: state.currencies.active.label,
 });
 
-//   const mapDispatchToProps = { getCurrencies, getCategories };
+const mapDispatchToProps = { addItemToCart, removeItemFromCart };
 
-export default connect(mapStateToProps, null)(ProductCard);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);

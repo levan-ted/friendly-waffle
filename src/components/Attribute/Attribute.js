@@ -32,7 +32,7 @@ export class Attribute extends Component {
             }}
             style={{ background: item.value }}
           >
-            {item.id === selectedAttr.attr.id ? "X" : ""}
+            {item.id === selectedAttr?.attr.id ? "X" : ""}
           </span>
         );
       return (

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import styles from "./CartBox.module.scss";
 import * as images from "../../assets/images";
 import { connect } from "react-redux";
@@ -13,9 +12,7 @@ export class CartBox extends Component {
           {!!this.props.numberOfItems && (
             <span className={styles.counter}>{this.props.numberOfItems}</span>
           )}
-          <Link to="/cart">
-            <img src={images.emptyCart} alt="cart" />
-          </Link>
+          <img src={images.emptyCart} alt="cart" />
         </div>
       </>
     );

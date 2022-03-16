@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatCurrency } from "../../helpers/format-currency";
+import parse from "html-react-parser";
 import { addItemToCart, removeItemFromCart } from "../../store/thunk";
 import styles from "./ProductDetails.module.scss";
 
@@ -24,6 +25,7 @@ export class ProductDetails extends Component {
 
   render() {
     const { product } = this.props;
+    const description = parse(product.description);
 
     const handleCart = () => {
       if (!this.state.alreadyInCart) {
@@ -74,7 +76,7 @@ export class ProductDetails extends Component {
           {btnText}
         </button>
 
-        <p className={styles.description}>{product.description}</p>
+        <p className={styles.description}>{description}</p>
       </div>
     );
   }

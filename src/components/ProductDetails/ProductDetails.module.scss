@@ -70,4 +70,17 @@
   width: 100%;
   overflow-y: scroll;
   text-align: justify;
+  padding-right: 5px;
+  h3,
+  h4,
+  h5,
+  ul,
+  li,
+  p {
+    font-family: $primary-font;
+  }
+
+  p {
+    margin: 1rem 0;
+  }
 }

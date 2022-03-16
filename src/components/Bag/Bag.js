@@ -26,9 +26,13 @@ export class Bag extends Component {
           <div className={styles.totals}>Total: {totalPrice} </div>
           <div className={styles.buttons}>
             <Link to="/cart">
-              <button className={styles.btn}>VIEW BAG</button>
+              <button onClick={this.props.toggleBag} className={styles.btn}>
+                VIEW BAG
+              </button>
             </Link>
-            <button className={styles.btngreen}>CHECKOUT</button>
+            <button onClick={this.props.toggleBag} className={styles.btngreen}>
+              CHECKOUT
+            </button>
           </div>
         </div>
       </div>
