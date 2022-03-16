@@ -2,7 +2,7 @@
   display: grid;
   width: 100%;
   height: fit-content;
-  min-height: 220px;
+  min-height: 14em;
   grid-template-columns: 1fr 45px 140px;
   grid-gap: 1rem;
   border-top: 1px solid #e5e5e5;
@@ -20,17 +20,17 @@
   }
 
   .brand {
-    font-size: 30px;
+    font-size: 2em;
     font-weight: 600;
   }
 
   .name {
-    font-size: 30px;
+    font-size: 1.8em;
     font-weight: 400;
   }
   .pricetag {
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     display: inline-block;
     width: 100%;
     text-align: left;
@@ -54,7 +54,7 @@
   width: 100%;
 
   span {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: 500;
   }
   .button {

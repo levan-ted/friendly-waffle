@@ -47,6 +47,13 @@ const cartSlice = createSlice({
       console.log(newState);
       if (newState && newState.length > 0) state.cartItems = newState;
     },
+
+    updateAttributes(state, action) {
+      const item = action.payload;
+      const existingItem = state.cartItems.find((el) => el.id === item.id);
+      existingItem.selectedAttributes = item.selectedAttributes;
+      storage.set("cart", state.cartItems);
+    },
   },
 });
 

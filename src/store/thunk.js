@@ -1,6 +1,7 @@
 import { dataActions } from "./slices/data-slice";
 import { currencyActions } from "./slices/currency-slice";
 import { cartActions } from "./slices/cart-slice";
+import { uiActions } from "./slices/ui-slice";
 import gql from "graphql-tag";
 import ApolloClient from "apollo-boost";
 import { CURRENCIES, CATEGORIES } from "../constants/gql-queries";
@@ -56,6 +57,15 @@ const reduceItemQuantity = (item) => async (dispatch) => {
   dispatch(cartActions.reduceItemQuantity(item));
 };
 
+const updateItemAttributes = (item) => async (dispatch) => {
+  dispatch(cartActions.updateAttributes(item));
+};
+
+// UI
+const toggleBag = () => async (dispatch) => {
+  dispatch(uiActions.toggleBag());
+};
+
 export {
   getCurrencies,
   changeCurrency,
@@ -64,4 +74,6 @@ export {
   removeItemFromCart,
   reduceItemQuantity,
   getInitialCartState,
+  updateItemAttributes,
+  toggleBag,
 };

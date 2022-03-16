@@ -15,6 +15,7 @@ import {
 } from "./store/thunk";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import Cart from "./pages/Cart";
+import Bag from "./components/Bag/Bag";
 
 class App extends PureComponent {
   componentDidMount() {
@@ -35,6 +36,7 @@ class App extends PureComponent {
             <Route path="/shop/:categoryId" component={Shop} />
             <Route path="/cart" component={Cart} />
           </Switch>
+          <Bag />
         </div>
       </ApolloProvider>
     );

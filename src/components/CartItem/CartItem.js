@@ -3,14 +3,29 @@ import { connect } from "react-redux";
 import styles from "./CartItem.module.scss";
 
 import { minusSquare, plusSquare } from "../../assets/images";
-import { addItemToCart, reduceItemQuantity } from "../../store/thunk";
+import {
+  addItemToCart,
+  reduceItemQuantity,
+  updateItemAttributes,
+} from "../../store/thunk";
 import PriceTag from "../../components/PriceTag";
 import Attribute from "../Attribute";
 
 export class CartItem extends Component {
   render() {
-    const { product } = this.props;
-    console.log(product);
+    const product = JSON.parse(JSON.stringify(this.props.product));
+
+    const updateAttributes = (id, attr) => {
+      if (!product.selectedAttributes) product.selectedAttributes = [];
+
+      if (product.selectedAttributes.some((attr) => attr.id === id)) {
+        product.selectedAttributes.find((el) => el.id === id).attr = attr;
+      } else {
+        product.selectedAttributes.push({ id, attr });
+      }
+      this.props.updateItemAttributes(product);
+    };
+
     return (
       <div className={styles.container}>
         <div className={styles.details}>
@@ -20,9 +35,11 @@ export class CartItem extends Component {
           {product.attributes.map((element) => {
             return (
               <Attribute
+                key={element.id}
                 element={element}
                 hideLabel={true}
                 selected={product.selectedAttributes}
+                updateAttributes={updateAttributes}
               />
             );
           })}
@@ -54,6 +71,10 @@ const mapStateToProps = (state) => ({
   currency: state.currencies.active.label,
 });
 
-const mapDispatchToProps = { addItemToCart, reduceItemQuantity };
+const mapDispatchToProps = {
+  addItemToCart,
+  reduceItemQuantity,
+  updateItemAttributes,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartItem);

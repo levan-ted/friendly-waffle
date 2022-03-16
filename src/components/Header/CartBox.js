@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 import styles from "./CartBox.module.scss";
 import * as images from "../../assets/images";
 import { connect } from "react-redux";
+import { toggleBag } from "../../store/thunk";
 
 export class CartBox extends Component {
-  state = { showCart: false };
-
   render() {
     return (
       <>
-        <div className={styles.icon}>
+        <div onClick={this.props.toggleBag} className={styles.icon}>
           {!!this.props.numberOfItems && (
             <span className={styles.counter}>{this.props.numberOfItems}</span>
           )}
@@ -28,6 +27,6 @@ const mapStateToProps = (state) => ({
   cartItems: state.cart.cartItems,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { toggleBag };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartBox);

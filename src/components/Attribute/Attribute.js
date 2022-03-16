@@ -22,7 +22,6 @@ export class Attribute extends Component {
     const el = this.props.element;
     const selectedAttributes = this.props.selected;
     const selectedAttr = selectedAttributes?.find((attr) => attr.id === el.id);
-    console.log(selectedAttr);
     const buttons = el.items.map((item) => {
       if (el.name === "Color")
         return (

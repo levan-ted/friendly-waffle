@@ -1,3 +1,5 @@
+@import "../../styles/css-variables.scss";
+
 $height-card: 444px;
 $height-image: 340px;
 
@@ -48,6 +50,7 @@ $height-image: 340px;
 }
 
 .details {
+  position: relative;
   width: 100%;
   height: calc($height-card - $height-image);
   display: flex;
@@ -62,4 +65,20 @@ $height-image: 340px;
   span:last-child {
     font-weight: 500;
   }
+}
+
+.cart-icon {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary-color;
+  right: 30px;
+  top: 0;
+  transform: translateY(-50%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
