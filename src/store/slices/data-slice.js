@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { categories: [] };
 
 const dataSlice = createSlice({
-  name: "data",
+  name: 'data',
   initialState,
   reducers: {
     getCategoryNames(state, action) {
@@ -12,8 +12,8 @@ const dataSlice = createSlice({
 
     getProducts(state, action) {
       state[action.payload.category] = action.payload.products;
-    },
-  },
+    }
+  }
 });
 
 export const dataActions = dataSlice.actions;

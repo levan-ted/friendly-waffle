@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { formatCurrency } from "../../helpers/format-currency";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { formatCurrency } from '../../helpers/format-currency';
 // import styles from "./PriceTag.module.scss";
 
 export class PriceTag extends Component {
@@ -14,7 +14,7 @@ export class PriceTag extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  currency: state.currencies.active.label,
+  currency: state.currencies.active.label
 });
 
 const mapDispatchToProps = {};

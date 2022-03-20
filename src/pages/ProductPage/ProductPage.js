@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import styles from "./ProductPage.module.scss";
-import Loader from "../../components/Loader";
-import Gallery from "../../components/Gallery";
-import ProductDetails from "../../components/ProductDetails";
-import { client } from "../../store/thunk";
-import { SINGLE_PRODUCT } from "../../constants/gql-queries";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import styles from './ProductPage.module.scss';
+import Loader from '../../components/Loader';
+import Gallery from '../../components/Gallery';
+import ProductDetails from '../../components/ProductDetails';
+import { client } from '../../store/thunk';
+import { SINGLE_PRODUCT } from '../../constants/gql-queries';
 
 export class ProductPage extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = { product: null };
   }
   componentDidMount() {
@@ -19,9 +19,9 @@ export class ProductPage extends Component {
 
   async fetch(id) {
     const res = await client.query({ query: SINGLE_PRODUCT(id) });
-    this.setState((state, props) => {
+    this.setState(() => {
       return {
-        product: res.data.product,
+        product: res.data.product
       };
     });
   }
@@ -33,15 +33,15 @@ export class ProductPage extends Component {
       const { product } = this.state;
       return (
         <main className={styles.grid}>
-          <Gallery product={this.state.product} />
-          <ProductDetails product={this.state.product} />
+          <Gallery product={product} />
+          <ProductDetails product={product} />
         </main>
       );
     }
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = {};
 

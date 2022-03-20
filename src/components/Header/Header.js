@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
-import { NavLink } from "react-router-dom";
-import styles from "./Header.module.scss";
-import * as images from "../../assets/images";
-import CurrencySelector from "./CurrencySelector";
-import CartBox from "./CartBox";
+import React, { PureComponent } from 'react';
+import { NavLink } from 'react-router-dom';
+import styles from './Header.module.scss';
+import * as images from '../../assets/images';
+import CurrencySelector from './CurrencySelector';
+import CartBox from './CartBox';
 
 export class Header extends PureComponent {
   render() {
@@ -13,10 +13,7 @@ export class Header extends PureComponent {
           <ul>
             {this.props.categories.map((ctg) => (
               <li key={ctg.name}>
-                <NavLink
-                  activeClassName={styles["active-link"]}
-                  to={`/shop/${ctg.name}`}
-                >
+                <NavLink activeClassName={styles['active-link']} to={`/shop/${ctg.name}`}>
                   {ctg.name}
                 </NavLink>
               </li>
@@ -32,9 +29,5 @@ export class Header extends PureComponent {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  categories: state.data.categories,
-});
 
 export default Header;

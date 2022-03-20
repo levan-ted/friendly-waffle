@@ -2,7 +2,7 @@ var support = (function () {
   if (!window.DOMParser) return false;
   var parser = new DOMParser();
   try {
-    parser.parseFromString("x", "text/html");
+    parser.parseFromString('x', 'text/html');
   } catch (err) {
     return false;
   }
@@ -19,7 +19,7 @@ export const parseHTML = function (str) {
   //   }
 
   // Otherwise, create div and append HTML
-  var dom = document.createElement("div");
+  var dom = document.createElement('div');
   dom.innerHTML = str;
   return dom;
 };

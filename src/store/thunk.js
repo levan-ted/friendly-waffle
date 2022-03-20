@@ -1,12 +1,10 @@
-import { dataActions } from "./slices/data-slice";
-import { currencyActions } from "./slices/currency-slice";
-import { cartActions } from "./slices/cart-slice";
-import { uiActions } from "./slices/ui-slice";
-import gql from "graphql-tag";
-import ApolloClient from "apollo-boost";
-import { CURRENCIES, CATEGORIES } from "../constants/gql-queries";
-
-export const client = new ApolloClient({ uri: "http://localhost:4000" });
+import { dataActions } from './slices/data-slice';
+import { currencyActions } from './slices/currency-slice';
+import { cartActions } from './slices/cart-slice';
+import { uiActions } from './slices/ui-slice';
+import ApolloClient from 'apollo-boost';
+import { CURRENCIES, CATEGORIES } from '../constants/gql-queries';
+export const client = new ApolloClient({ uri: 'http://localhost:4000' });
 
 // CURRENCY OPERATIONS
 const getCurrencies = () => async (dispatch) => {
@@ -75,5 +73,5 @@ export {
   reduceItemQuantity,
   getInitialCartState,
   updateItemAttributes,
-  toggleBag,
+  toggleBag
 };

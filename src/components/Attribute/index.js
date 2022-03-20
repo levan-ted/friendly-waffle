@@ -1,2 +1,2 @@
-import Attribute from "./Attribute";
+import Attribute from './Attribute';
 export default Attribute;

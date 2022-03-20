@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import styles from "./Gallery.module.scss";
+import React, { Component } from 'react';
+import styles from './Gallery.module.scss';
 
 export class Gallery extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export class Gallery extends Component {
 
   render() {
     return (
-      <div className={styles["image-container"]}>
+      <div className={styles['image-container']}>
         <div className={styles.thumbnails}>
           {this.props.product.gallery.map((imgUrl, idx) => (
             <img
@@ -26,7 +26,7 @@ export class Gallery extends Component {
             />
           ))}
         </div>
-        <div className={styles["image-preview"]}>
+        <div className={styles['image-preview']}>
           <img src={this.state.imageUrl} alt={this.props.product.name} />
         </div>
       </div>

@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import styles from "./Bag.module.scss";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import styles from './Bag.module.scss';
 
-import CartItem from "../CartItem";
+import CartItem from '../CartItem';
 
-import { toggleBag } from "../../store/thunk";
-import { formatCurrency } from "../../helpers/format-currency";
+import { toggleBag } from '../../store/thunk';
+import { formatCurrency } from '../../helpers/format-currency';
 
 export class Bag extends Component {
   state = { showBag: false };
@@ -29,13 +29,13 @@ export class Bag extends Component {
             My Bag, <span>{quantity} items</span>
           </h2>
           {this.props.cartItems.map((product) => {
-            return <CartItem product={product} xs />;
+            return <CartItem key={Math.random()} product={product} xs />;
           })}
           <div className={styles.totals}>
-            <span>Total</span>{" "}
+            <span>Total</span>{' '}
             <span>
               {formatCurrency(totalPrice)} {this.props.currency}
-            </span>{" "}
+            </span>{' '}
           </div>
           <div className={styles.buttons}>
             <Link to="/cart">
@@ -58,7 +58,7 @@ export class Bag extends Component {
 const mapStateToProps = (state) => ({
   cartItems: state.cart.cartItems,
   currency: state.currencies.active.label,
-  showBag: state.ui.showBag,
+  showBag: state.ui.showBag
 });
 
 const mapDispatchToProps = { toggleBag };

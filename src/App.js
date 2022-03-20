@@ -1,27 +1,23 @@
-import { PureComponent } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import { ApolloProvider } from "react-apollo";
-import { client } from "./store/thunk";
-import "./App.scss";
-import * as storage from "./helpers/localStorage";
-import Header from "./components/Header";
-import Shop from "./pages/Shop";
+import React, { PureComponent } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { ApolloProvider } from 'react-apollo';
+import { client } from './store/thunk';
+import './App.scss';
+import * as storage from './helpers/localStorage';
+import Header from './components/Header';
+import Shop from './pages/Shop';
 
-import {
-  getCurrencies,
-  getCategories,
-  getInitialCartState,
-} from "./store/thunk";
-import ProductPage from "./pages/ProductPage/ProductPage";
-import Cart from "./pages/Cart";
-import Bag from "./components/Bag/Bag";
+import { getCurrencies, getCategories, getInitialCartState } from './store/thunk';
+import ProductPage from './pages/ProductPage/ProductPage';
+import Cart from './pages/Cart';
+import Bag from './components/Bag/Bag';
 
 class App extends PureComponent {
   componentDidMount() {
     this.props.getCurrencies();
     this.props.getCategories();
-    this.props.getInitialCartState(storage.get("cart"));
+    this.props.getInitialCartState(storage.get('cart'));
   }
   render() {
     return (
@@ -44,13 +40,13 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  data: state.data,
+  data: state.data
 });
 
 const mapDispatchToProps = {
   getCurrencies,
   getCategories,
-  getInitialCartState,
+  getInitialCartState
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

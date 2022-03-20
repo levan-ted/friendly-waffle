@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import styles from "./CartBox.module.scss";
-import * as images from "../../assets/images";
-import { connect } from "react-redux";
-import { toggleBag } from "../../store/thunk";
+import React, { Component } from 'react';
+import styles from './CartBox.module.scss';
+import * as images from '../../assets/images';
+import { connect } from 'react-redux';
+import { toggleBag } from '../../store/thunk';
 
 export class CartBox extends Component {
   render() {
@@ -21,7 +21,7 @@ export class CartBox extends Component {
 
 const mapStateToProps = (state) => ({
   numberOfItems: state.cart.cartItems.length,
-  cartItems: state.cart.cartItems,
+  cartItems: state.cart.cartItems
 });
 
 const mapDispatchToProps = { toggleBag };

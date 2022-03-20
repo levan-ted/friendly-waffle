@@ -1,15 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { showBag: false };
 
 const uiSlice = createSlice({
-  name: "ui",
+  name: 'ui',
   initialState,
   reducers: {
     toggleBag(state) {
       state.showBag = !state.showBag;
-    },
-  },
+    }
+  }
 });
 
 export const uiActions = uiSlice.actions;

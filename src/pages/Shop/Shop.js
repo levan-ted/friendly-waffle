@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import styles from "./Shop.module.scss";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import styles from './Shop.module.scss';
+import { connect } from 'react-redux';
 
-import ProductCard from "../../components/ProductCard/ProductCard";
-import Loader from "../../components/Loader";
+import ProductCard from '../../components/ProductCard/ProductCard';
+import Loader from '../../components/Loader';
 
 export class Shop extends Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = { productList: null };
   }
@@ -22,13 +22,11 @@ export class Shop extends Component {
   updateProductList() {
     this.setState((state, props) => {
       const category = props.match.params.categoryId;
-      const productList = props.data.categories.find(
-        (ctg) => ctg.name === category
-      )?.products;
+      const productList = props.data.categories.find((ctg) => ctg.name === category)?.products;
 
       return {
         productList,
-        category,
+        category
       };
     });
   }
@@ -42,11 +40,7 @@ export class Shop extends Component {
           <h2 className={styles.header}>{this.state.category}</h2>
           <div className={styles.grid}>
             {this.state.productList.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                currency={this.props.currency}
-              />
+              <ProductCard key={product.id} product={product} currency={this.props.currency} />
             ))}
           </div>
         </main>
@@ -57,7 +51,7 @@ export class Shop extends Component {
 
 const mapStateToProps = (state) => ({
   data: state.data,
-  currency: state.currencies.active.label,
+  currency: state.currencies.active.label
 });
 
 //   const mapDispatchToProps = { getCurrencies, getCategories };

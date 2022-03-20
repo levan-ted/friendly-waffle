@@ -1,28 +1,27 @@
-import React, { PureComponent } from "react";
-import styles from "./CurrencySelector.module.scss";
-import * as images from "../../assets/images";
-import { connect } from "react-redux";
-import { changeCurrency } from "../../store/thunk";
+import React, { PureComponent } from 'react';
+import styles from './CurrencySelector.module.scss';
+import * as images from '../../assets/images';
+import { connect } from 'react-redux';
+import { changeCurrency } from '../../store/thunk';
 
 export class CurrencySelector extends PureComponent {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       showCurrencyList: false,
-      arrowStyle: "",
-      currencyListStyle: styles.hidden,
+      arrowStyle: '',
+      currencyListStyle: styles.hidden
     };
   }
 
   toggleCurrency() {
-    this.setState((state, props) => {
-      const updatedArrowStyle = state.arrowStyle === "" ? styles.rotated : "";
-      const updatedCurrencyListStyle =
-        state.currencyListStyle === "" ? styles.hidden : "";
+    this.setState((state) => {
+      const updatedArrowStyle = state.arrowStyle === '' ? styles.rotated : '';
+      const updatedCurrencyListStyle = state.currencyListStyle === '' ? styles.hidden : '';
       return {
         showCurrencyList: !state.showCurrencyList,
         arrowStyle: updatedArrowStyle,
-        currencyListStyle: updatedCurrencyListStyle,
+        currencyListStyle: updatedCurrencyListStyle
       };
     });
   }
@@ -36,9 +35,7 @@ export class CurrencySelector extends PureComponent {
   render() {
     return (
       <span className={styles.currency}>
-        <p onClick={this.toggleCurrency.bind(this)}>
-          {this.props.active.symbol}
-        </p>
+        <p onClick={this.toggleCurrency.bind(this)}>{this.props.active.symbol}</p>
         <img
           className={this.state.arrowStyle}
           src={images.selectArrow}
@@ -46,16 +43,10 @@ export class CurrencySelector extends PureComponent {
         />
         <ul
           onClick={this.selectCurrency.bind(this)}
-          onMouseLeave={() =>
-            this.state.showCurrencyList && this.toggleCurrency()
-          }
-          className={`${styles["currency-list"]} ${this.state.currencyListStyle}`}
-        >
+          onMouseLeave={() => this.state.showCurrencyList && this.toggleCurrency()}
+          className={`${styles['currency-list']} ${this.state.currencyListStyle}`}>
           {this.props.list.map((cur) => (
-            <li
-              key={cur.label}
-              data-value={cur.label}
-            >{`${cur.symbol} ${cur.label}`}</li>
+            <li key={cur.label} data-value={cur.label}>{`${cur.symbol} ${cur.label}`}</li>
           ))}
         </ul>
       </span>
@@ -65,7 +56,7 @@ export class CurrencySelector extends PureComponent {
 
 const mapStateToProps = (state) => ({
   list: state.currencies.list,
-  active: state.currencies.active,
+  active: state.currencies.active
 });
 
 const mapDispatchToProps = { changeCurrency };
