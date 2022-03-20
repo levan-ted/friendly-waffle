@@ -46,10 +46,10 @@ export class ProductCard extends Component {
             className={styles.card}>
             <div className={styles['image-container']}>
               <img src={product.gallery[0]} />
-              {!!product.inStock && <span className={styles['out-of-stock']}>OUT OF STOCK</span>}
+              {!product.inStock && <span className={styles['out-of-stock']}>OUT OF STOCK</span>}
             </div>
             <div className={styles.details}>
-              {this.state.showCartIcon && !product.inStock && (
+              {this.state.showCartIcon && product.inStock && (
                 <span
                   onClick={(e) => this.handleCart.bind(this)(e, product)}
                   className={styles['cart-icon']}>
