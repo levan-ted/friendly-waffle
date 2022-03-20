@@ -1,4 +1,4 @@
-@import "../../styles/css-variables.scss";
+@import '../../styles/css-variables.scss';
 
 $height-card: 444px;
 $height-image: 340px;
@@ -58,6 +58,7 @@ $height-image: 340px;
   align-items: flex-start;
   justify-content: space-evenly;
   font-size: 1.125rem;
+  padding: 0.5rem 0;
 
   span:first-child {
     font-weight: 300;
@@ -79,12 +80,10 @@ $height-image: 340px;
   right: 30px;
   top: 0;
   transform: translateY(-50%);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   transition: all ease-out 0.2s;
 }
 
 .cart-icon:hover {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }

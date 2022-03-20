@@ -56,6 +56,7 @@ export class ProductCard extends Component {
                   <img src={this.state.isInCart ? checkWhite : cartWhite} alt="Add to Cart" />
                 </span>
               )}
+              <span style={{ fontSize: '0.8rem' }}>{product.brand}</span>
               <span>{product.name}</span>
               <span>{priceTag}</span>
             </div>
