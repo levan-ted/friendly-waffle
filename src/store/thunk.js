@@ -24,7 +24,7 @@ const changeCurrency = (value) => async (dispatch) => {
   }
 };
 
-// GET PRODUCTS FROM THE SERVER
+// GET CATEGORY NAMES FROM THE SERVER
 
 const getCategories = () => async (dispatch) => {
   try {

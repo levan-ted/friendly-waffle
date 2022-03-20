@@ -1,31 +1,34 @@
 import React, { Component } from 'react';
 import styles from './Shop.module.scss';
 import { connect } from 'react-redux';
-
+import { client } from '../../store/thunk';
+import { CATEGORY_PRODUCTS } from '../../constants/gql-queries';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Loader from '../../components/Loader';
 
 export class Shop extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { productList: null };
   }
 
   componentDidMount() {
-    if (!this.state.productList) this.updateProductList();
+    const category = this.props.match.params.categoryId;
+    this.fetch(category);
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props !== prevProps) this.updateProductList();
+    if (this.props !== prevProps) {
+      const category = this.props.match.params.categoryId;
+      this.fetch(category);
+    }
   }
 
-  updateProductList() {
-    this.setState((state, props) => {
-      const category = props.match.params.categoryId;
-      const productList = props.data.categories.find((ctg) => ctg.name === category)?.products;
-
+  async fetch(category) {
+    const res = await client.query({ query: CATEGORY_PRODUCTS(category) });
+    this.setState(() => {
       return {
-        productList,
+        productList: res.data.category.products,
         category
       };
     });
@@ -50,10 +53,7 @@ export class Shop extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  data: state.data,
   currency: state.currencies.active.label
 });
-
-//   const mapDispatchToProps = { getCurrencies, getCategories };
 
 export default connect(mapStateToProps, null)(Shop);

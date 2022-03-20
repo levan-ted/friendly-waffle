@@ -4,6 +4,18 @@ const CATEGORIES = gql`
   {
     categories {
       name
+    }
+  }
+`;
+
+const CATEGORY_PRODUCTS = (category) => {
+  return gql`{
+    category(
+      input: {
+        title: "${category}"
+      }
+    ) {
+      name
       products {
         id
         name
@@ -31,8 +43,8 @@ const CATEGORIES = gql`
         brand
       }
     }
-  }
-`;
+  }`;
+};
 
 const SINGLE_PRODUCT = (id) => gql`{
     product(id: "${id}") {
@@ -41,7 +53,6 @@ const SINGLE_PRODUCT = (id) => gql`{
      inStock
      gallery
      description
-     category
      attributes{
       name
       id
@@ -72,4 +83,4 @@ const CURRENCIES = gql`
   }
 `;
 
-export { CATEGORIES, SINGLE_PRODUCT, CURRENCIES };
+export { CATEGORIES, SINGLE_PRODUCT, CURRENCIES, CATEGORY_PRODUCTS };
