@@ -12,6 +12,13 @@
   text-align: left;
 }
 
+.attr-name-small {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-top: 0.5rem;
+}
+
 .buttons {
   display: flex;
   gap: 1rem;
@@ -22,6 +29,7 @@
     justify-content: center;
     width: 63px;
     height: 45px;
+
     border: 1px solid black;
     cursor: pointer;
   }
@@ -36,5 +44,6 @@
   span {
     width: 42px;
     height: 30px;
+    font-size: 0.7rem;
   }
 }

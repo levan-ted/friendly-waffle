@@ -19,13 +19,21 @@ export class ProductCard extends Component {
   handleCart(e, product) {
     e.preventDefault();
 
-    const shallowCopy = JSON.parse(JSON.stringify(product));
+    const productCopy = JSON.parse(JSON.stringify(product));
+    productCopy.selectedAttributes = productCopy.attributes.map((attribute) => ({
+      id: attribute.id,
+      attr: attribute.items[0]
+    }));
+
+    productCopy.combinedId =
+      productCopy.id +
+      productCopy.selectedAttributes.map((attribute) => attribute.attr.value).join('');
 
     if (!this.state.isInCart) {
-      this.props.addItemToCart(shallowCopy);
+      this.props.addItemToCart(productCopy);
       this.setState((prevState) => ({ ...prevState, isInCart: true }));
     } else {
-      this.props.removeItemFromCart(shallowCopy);
+      this.props.removeItemFromCart(productCopy);
       this.setState((prevState) => ({ ...prevState, isInCart: false }));
     }
   }
@@ -68,7 +76,8 @@ export class ProductCard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  currency: state.currencies.active.label
+  currency: state.currencies.active.label,
+  cartItems: state.cart.cartItems
 });
 
 const mapDispatchToProps = { addItemToCart, removeItemFromCart };

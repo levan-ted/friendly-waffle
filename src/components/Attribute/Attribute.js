@@ -46,7 +46,9 @@ export class Attribute extends Component {
 
     return (
       <div className={styles.attribute}>
-        {!this.props.hideLabel && <span className={styles['attr-name']}>{el.name}</span>}
+        <span className={this.props.hideLabel ? styles['attr-name-small'] : styles['attr-name']}>
+          {el.name}
+        </span>
         <div
           className={
             this.props.hideLabel ? `${styles.shrinked} ${styles.buttons}` : styles.buttons

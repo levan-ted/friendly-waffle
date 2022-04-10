@@ -47,8 +47,13 @@ const cartSlice = createSlice({
 
     updateAttributes(state, action) {
       const item = action.payload;
+
       const existingItem = state.cartItems.find((el) => el.combinedId === item.combinedId);
+
       existingItem.selectedAttributes = item.selectedAttributes;
+      existingItem.combinedId =
+        existingItem.id +
+        existingItem.selectedAttributes.map((attribute) => attribute.attr.value).join('');
       storage.set('cart', state.cartItems);
     }
   }
