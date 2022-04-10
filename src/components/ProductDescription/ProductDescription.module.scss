@@ -1,0 +1,24 @@
+@import '../../styles/css-variables.scss';
+.description {
+  font-family: $primary-font;
+  line-height: 150%;
+  height: 200px;
+  width: 100%;
+  grid-area: description;
+  margin: 3rem 0;
+
+  text-align: justify;
+  padding-right: 5px;
+  h3,
+  h4,
+  h5,
+  ul,
+  li,
+  p {
+    font-family: inherit;
+  }
+
+  p {
+    margin: 1rem 0;
+  }
+}

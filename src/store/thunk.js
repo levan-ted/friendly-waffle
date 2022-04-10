@@ -39,7 +39,6 @@ const getCategories = () => async (dispatch) => {
 // CART ACTIONS
 
 const getInitialCartState = (cart) => (dispatch) => {
-  console.log(cart);
   dispatch(cartActions.getInitialState(cart));
 };
 

@@ -1,10 +1,10 @@
-@import "../../styles/css-variables.scss";
+@import '../../styles/css-variables.scss';
 
 .image-container {
-  position: relative;
+  position: sticky;
   display: grid;
   width: 100%;
-  height: 800px;
+  height: 500px;
   grid-template-columns: 1fr 5fr;
 }
 

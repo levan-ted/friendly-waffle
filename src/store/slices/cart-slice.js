@@ -9,9 +9,9 @@ const cartSlice = createSlice({
   reducers: {
     addItem(state, action) {
       const newItem = action.payload;
-      const alreadyInCart = state.cartItems.some((item) => item.id === newItem.id);
+      const alreadyInCart = state.cartItems.some((item) => item.combinedId === newItem.combinedId);
       if (alreadyInCart) {
-        const existingItem = state.cartItems.find((el) => el.id === newItem.id);
+        const existingItem = state.cartItems.find((el) => el.combinedId === newItem.combinedId);
         existingItem.quantity += 1;
       } else {
         newItem.quantity = 1;
@@ -21,18 +21,18 @@ const cartSlice = createSlice({
     },
     removeItem(state, action) {
       const item = action.payload;
-      const existingItem = state.cartItems.find((el) => el.id === item.id);
+      const existingItem = state.cartItems.find((el) => el.combinedId === item.combinedId);
       if (!existingItem) return;
-      state.cartItems = state.cartItems.filter((el) => el.id !== item.id);
+      state.cartItems = state.cartItems.filter((el) => el.combinedId !== item.combinedId);
       storage.set('cart', state.cartItems);
     },
 
     reduceItemQuantity(state, action) {
       const item = action.payload;
-      const existingItem = state.cartItems.find((el) => el.id === item.id);
+      const existingItem = state.cartItems.find((el) => el.combinedId === item.combinedId);
       if (!existingItem) return;
       if (existingItem.quantity === 1) {
-        state.cartItems = state.cartItems.filter((el) => el.id !== item.id);
+        state.cartItems = state.cartItems.filter((el) => el.combinedId !== item.combinedId);
       } else {
         existingItem.quantity--;
       }
@@ -42,13 +42,12 @@ const cartSlice = createSlice({
     getInitialState(state, action) {
       if (!action.payload) return;
       const newState = [...action.payload];
-      console.log(newState);
       if (newState && newState.length > 0) state.cartItems = newState;
     },
 
     updateAttributes(state, action) {
       const item = action.payload;
-      const existingItem = state.cartItems.find((el) => el.id === item.id);
+      const existingItem = state.cartItems.find((el) => el.combinedId === item.combinedId);
       existingItem.selectedAttributes = item.selectedAttributes;
       storage.set('cart', state.cartItems);
     }

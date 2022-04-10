@@ -4,6 +4,7 @@ import styles from './ProductPage.module.scss';
 import Loader from '../../components/Loader';
 import Gallery from '../../components/Gallery';
 import ProductDetails from '../../components/ProductDetails';
+import ProductDescription from '../../components/ProductDescription';
 import { client } from '../../store/thunk';
 import { SINGLE_PRODUCT } from '../../constants/gql-queries';
 
@@ -35,6 +36,7 @@ export class ProductPage extends Component {
         <main className={styles.grid}>
           <Gallery product={product} />
           <ProductDetails product={product} />
+          <ProductDescription product={product} />
         </main>
       );
     }

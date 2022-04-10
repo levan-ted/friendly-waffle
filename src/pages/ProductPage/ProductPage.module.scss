@@ -1,9 +1,13 @@
-@import "../../styles/css-variables.scss";
+@import '../../styles/css-variables.scss';
 
 .grid {
   position: relative;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 500px 1fr;
+  grid-template-areas:
+    'gallery details'
+    'description description';
   padding: 0 $side-padding;
   height: 800px;
   margin: 6rem 0;
@@ -12,5 +16,13 @@
 @media only screen and (max-width: 1400px) {
   .grid {
     padding: 0 calc($side-padding - 150px);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 500px 1fr 1fr;
+    grid-template-areas: 'gallery' 'details' 'description';
   }
 }
