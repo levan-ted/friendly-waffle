@@ -1,9 +1,10 @@
-@import "../../styles/css-variables.scss";
+@import '../../styles/css-variables.scss';
 
 .currency {
   @include centered-flex;
   margin: 0 1rem;
   font-weight: 500;
+  cursor: pointer;
   img {
     padding: 10px;
     transition: ease-in-out 0.2s;

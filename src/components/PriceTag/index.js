@@ -1,2 +1,2 @@
-import PriceTag from "./PriceTag";
+import PriceTag from './PriceTag';
 export default PriceTag;

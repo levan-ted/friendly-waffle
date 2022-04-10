@@ -3,7 +3,7 @@ import styles from './CurrencySelector.module.scss';
 import * as images from '../../assets/images';
 import { connect } from 'react-redux';
 import { changeCurrency } from '../../store/thunk';
-
+import Backdrop from '../Backdrop';
 export class CurrencySelector extends PureComponent {
   constructor() {
     super();
@@ -34,22 +34,26 @@ export class CurrencySelector extends PureComponent {
 
   render() {
     return (
-      <span className={styles.currency}>
-        <p onClick={this.toggleCurrency.bind(this)}>{this.props.active.symbol}</p>
-        <img
-          className={this.state.arrowStyle}
-          src={images.selectArrow}
-          onClick={this.toggleCurrency.bind(this)}
-        />
-        <ul
-          onClick={this.selectCurrency.bind(this)}
-          onMouseLeave={() => this.state.showCurrencyList && this.toggleCurrency()}
-          className={`${styles['currency-list']} ${this.state.currencyListStyle}`}>
-          {this.props.list.map((cur) => (
-            <li key={cur.label} data-value={cur.label}>{`${cur.symbol} ${cur.label}`}</li>
-          ))}
-        </ul>
-      </span>
+      <>
+        <span className={styles.currency}>
+          <p onClick={this.toggleCurrency.bind(this)}>{this.props.active.symbol}</p>
+          <img
+            className={this.state.arrowStyle}
+            src={images.selectArrow}
+            onClick={this.toggleCurrency.bind(this)}
+          />
+          <ul
+            onClick={this.selectCurrency.bind(this)}
+            className={`${styles['currency-list']} ${this.state.currencyListStyle}`}>
+            {this.props.list.map((cur) => (
+              <li key={cur.label} data-value={cur.label}>{`${cur.symbol} ${cur.label}`}</li>
+            ))}
+          </ul>
+        </span>
+        {this.state.showCurrencyList && (
+          <Backdrop onClick={() => this.state.showCurrencyList && this.toggleCurrency()} />
+        )}
+      </>
     );
   }
 }
