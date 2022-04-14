@@ -4,7 +4,7 @@
   display: block;
   position: absolute;
   width: 100%;
-  height: calc(100% - 80px);
+  height: 100vh;
   height: max-content;
   top: 80px;
 }
@@ -21,6 +21,8 @@
   top: 0;
   right: $side-padding;
   width: 540px;
+  overflow-y: scroll;
+  max-height: 600px;
   padding: 1rem;
   background: white;
   font-size: 0.8rem;

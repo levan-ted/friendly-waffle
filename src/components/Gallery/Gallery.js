@@ -28,6 +28,9 @@ export class Gallery extends Component {
         </div>
         <div className={styles['image-preview']}>
           <img src={this.state.imageUrl} alt={this.props.product.name} />
+          {!this.props.product.inStock && (
+            <span className={styles['out-of-stock']}> OUT OF STOCK</span>
+          )}
         </div>
       </div>
     );
